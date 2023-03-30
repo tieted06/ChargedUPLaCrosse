@@ -9,7 +9,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 public class ArmSub extends SubsystemBase {
 
 
-public static WPI_TalonFX armMotor;
+private static WPI_TalonFX armMotor;
     
     public ArmSub() {
 
@@ -37,6 +37,12 @@ public static WPI_TalonFX armMotor;
     public void simulationPeriodic() {
         // This method will be called once per scheduler run when in simulation
 
+    }
+
+
+
+    public void my_set(double speed) {
+        armMotor.set(speed);
     }
 
     // Put methods for controlling this subsystem

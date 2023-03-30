@@ -21,18 +21,19 @@ public class Claw extends CommandBase {
   
     @Override
     public void initialize() {
+        m_clawSub.my_set(DoubleSolenoid.Value.kForward);
     }
-
- 
+    
+    
     @Override
     public void execute() {
-        ClawSub.grabSolenoid.set(DoubleSolenoid.Value.kForward);
+
         }
 
     
     @Override
     public void end(boolean interrupted) {
-        ClawSub.grabSolenoid.set(DoubleSolenoid.Value.kReverse);
+        m_clawSub.my_set(DoubleSolenoid.Value.kReverse);
        }
 
    

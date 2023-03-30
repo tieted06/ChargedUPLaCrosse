@@ -1,4 +1,5 @@
 package frc.robot.commands;
+import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
@@ -24,16 +25,20 @@ public class Arm extends CommandBase {
 
     @Override
     public void execute() {
-        ArmSub.armMotor.set(
-            RobotContainer.getInstance().getArmClawStick().getRawAxis(Constants.armClawstickYaxis)
+        m_armSub.my_set(
+            deadband(RobotContainer.getInstance().getArmClawStick().getRawAxis(Constants.armClawstickYaxis)
                        * ((1 + RobotContainer.getInstance().getArmClawStick().getRawAxis(Constants.armSpeed))
-                              / Constants.potvalueMOD));
+                              / Constants.potvalueMOD)));
        //ArmSub.armMotor.set(.2);
+    }
+
+    private double deadband(double speed){
+        return MathUtil.applyDeadband(speed, .1);
     }
 
     @Override
     public void end(boolean interrupted) {
-        ArmSub.armMotor.set(0);
+        m_armSub.my_set(0);
     }
 
     @Override

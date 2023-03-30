@@ -17,7 +17,7 @@ private MotorControllerGroup leftMotors;
 private WPI_TalonFX rightFront;
 private WPI_TalonFX rightBack;
 private MotorControllerGroup rightMotors;
-public static DifferentialDrive arcadeDrive;
+private static DifferentialDrive arcadeDrive;
 
     
 public DriveSub() { //This is the main program to run the drivetrain
@@ -58,6 +58,10 @@ public void periodic() {
 @Override
 public void simulationPeriodic() {
 
+}
+
+public void my_Archade(double speed, double turn, boolean square_input){
+    arcadeDrive.arcadeDrive(speed, turn, square_input);
 }
 
     

@@ -4,41 +4,37 @@
 
 package frc.robot.commands;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.subsystems.RampSub;
+import frc.robot.subsystems.DriveSub;
 
-public class Ramp extends CommandBase {
+public class Auto_Drive extends CommandBase {
+  private final DriveSub m_drive;
+  private double m_speed;
+  private double m_turn;
 
-  private final RampSub m_rampSub;
-
-  /** Creates a new Ramp. */
-  public Ramp(RampSub subsystem) {
-
-    m_rampSub = subsystem;
-    addRequirements(m_rampSub);
-  
+  /** Creates a new Auto_Drive. */
+  public Auto_Drive(double speed, double turn, DriveSub sub) {
+    m_drive = sub;
+    m_speed = speed;
+    m_turn = turn;
+    addRequirements(m_drive);
+    // Use addRequirements() here to declare subsystem dependencies.
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    m_rampSub.my_set(DoubleSolenoid.Value.kForward);
-
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-
-    
+    m_drive.my_Archade(m_speed, m_turn,false);
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) { 
-    
-    m_rampSub.my_set(DoubleSolenoid.Value.kReverse);
+  public void end(boolean interrupted) {
+    m_drive.my_Archade(0,0,false);
   }
 
   // Returns true when the command should end.

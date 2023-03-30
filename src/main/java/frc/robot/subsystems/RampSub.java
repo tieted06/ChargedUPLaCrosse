@@ -6,12 +6,13 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
 public class RampSub extends SubsystemBase {
 
-  public static DoubleSolenoid rampSolenoid;
+  private static DoubleSolenoid rampSolenoid;
   /** Creates a new RampSub. */
   public RampSub() {
     rampSolenoid = new DoubleSolenoid(Constants.PCMCan, PneumaticsModuleType.CTREPCM, Constants.rampSol1, Constants.rampSol2);
@@ -22,4 +23,8 @@ public class RampSub extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
   }
+
+public void my_set(Value direction) {
+  rampSolenoid.set(direction);
+}
 }

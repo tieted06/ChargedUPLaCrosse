@@ -25,10 +25,9 @@ public class Drive extends CommandBase {
     
     @Override
     public void execute() {
-        DriveSub.arcadeDrive.arcadeDrive(
-                RobotContainer.getInstance().getDriveStick().getRawAxis(Constants.DrivestickXaxis)
-                        * ((1 + RobotContainer.getInstance().getArmClawStick().getRawAxis(Constants.driveSpeed))
-                                / Constants.turnSpeedMod),
+        m_driveSub.my_Archade(RobotContainer.getInstance().getDriveStick().getRawAxis(Constants.DrivestickXaxis)
+        * ((1 + RobotContainer.getInstance().getArmClawStick().getRawAxis(Constants.driveSpeed))
+                / Constants.turnSpeedMod), 
                 RobotContainer.getInstance().getDriveStick().getRawAxis(Constants.DrivestickYaxis)
                         * -1* ((1 + RobotContainer.getInstance().getArmClawStick().getRawAxis(Constants.driveSpeed))
                                 / Constants.potvalueMOD),false);
