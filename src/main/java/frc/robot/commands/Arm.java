@@ -5,15 +5,11 @@ import frc.robot.Constants;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.ArmSub;
 
-
 public class Arm extends CommandBase {
 
-       private final ArmSub m_armSub;
- 
-   
+    private final ArmSub m_armSub;
 
     public Arm(ArmSub subsystem) {
-
 
         m_armSub = subsystem;
         addRequirements(m_armSub);
@@ -29,7 +25,6 @@ public class Arm extends CommandBase {
             deadband(RobotContainer.getInstance().getArmClawStick().getRawAxis(Constants.armClawstickYaxis)
                        * ((1 + RobotContainer.getInstance().getArmClawStick().getRawAxis(Constants.armSpeed))
                               / Constants.potvalueMOD)));
-       //ArmSub.armMotor.set(.2);
     }
 
     private double deadband(double speed){

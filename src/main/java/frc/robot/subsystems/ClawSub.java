@@ -18,8 +18,6 @@ public class ClawSub extends SubsystemBase {
     grabSolenoid = new DoubleSolenoid(Constants.PCMCan,PneumaticsModuleType.CTREPCM, Constants.grabSol1, Constants.grabSOl2);
     addChild("GrabSolenoid", grabSolenoid);
  
-
-
     }
 
     @Override
@@ -34,6 +32,13 @@ public class ClawSub extends SubsystemBase {
 
     public void my_set(Value direction) {
         grabSolenoid.set(direction);
+    }
+
+    public void my_Claw_Close() {
+        grabSolenoid.set(Value.kReverse);
+    }
+    public void my_Claw_Open() {
+        grabSolenoid.set(Value.kForward);
     }
 
     

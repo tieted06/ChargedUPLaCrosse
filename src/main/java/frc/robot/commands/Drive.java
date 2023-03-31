@@ -1,13 +1,11 @@
-
 package frc.robot.commands;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.Constants;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.DriveSub;
 
-
 public class Drive extends CommandBase {
-
     
     private final DriveSub m_driveSub;
  
@@ -25,12 +23,14 @@ public class Drive extends CommandBase {
     
     @Override
     public void execute() {
-        m_driveSub.my_Archade(RobotContainer.getInstance().getDriveStick().getRawAxis(Constants.DrivestickXaxis)
+        double speed = RobotContainer.getInstance().getDriveStick().getRawAxis(Constants.DrivestickYaxis)
         * ((1 + RobotContainer.getInstance().getArmClawStick().getRawAxis(Constants.driveSpeed))
-                / Constants.turnSpeedMod), 
-                RobotContainer.getInstance().getDriveStick().getRawAxis(Constants.DrivestickYaxis)
-                        * -1* ((1 + RobotContainer.getInstance().getArmClawStick().getRawAxis(Constants.driveSpeed))
-                                / Constants.potvalueMOD),false);
+                / Constants.potvalueMOD);
+
+        double turn = RobotContainer.getInstance().getDriveStick().getRawAxis(Constants.DrivestickXaxis)
+        * -1* ((1 + RobotContainer.getInstance().getArmClawStick().getRawAxis(Constants.driveSpeed))
+                / Constants.turnSpeedMod);
+        m_driveSub.my_Arcade(speed,turn,false);
     }
 
     

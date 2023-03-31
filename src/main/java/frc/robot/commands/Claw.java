@@ -1,23 +1,19 @@
 package frc.robot.commands;
+
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.ClawSub;
-
 
 public class Claw extends CommandBase {
 
     private final ClawSub m_clawSub;
  
-    
-
-
     public Claw(ClawSub subsystem) {
 
         m_clawSub = subsystem;
         addRequirements(m_clawSub);
 
     }
-
   
     @Override
     public void initialize() {
@@ -29,13 +25,11 @@ public class Claw extends CommandBase {
     public void execute() {
 
         }
-
     
     @Override
     public void end(boolean interrupted) {
         m_clawSub.my_set(DoubleSolenoid.Value.kReverse);
        }
-
    
     @Override
     public boolean isFinished() {
